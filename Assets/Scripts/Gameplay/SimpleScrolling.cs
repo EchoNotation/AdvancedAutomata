@@ -4,33 +4,40 @@ using UnityEngine;
 
 public class SimpleScrolling : MonoBehaviour
 {
-	public float panSpeed = 1f;
-	private Vector3 mouseOrigin, prevPos;
+	private Plane groundPlane;
+	private Vector3 clickPos;
+	private Camera mainCamera;
+	public float xHigh, xLow, yHigh, yLow;
 
-	// Update is called once per frame
-    void LateUpdate()
-    {
-		Vector3 pos = transform.position;
+	void Start()
+	{
+		groundPlane = new Plane(new Vector3(0, 0, 1), 0);
+		mainCamera = Camera.main;
+	}
 
-		if(Input.GetMouseButtonDown(0))
-		{
-			//Left click pressed
-			mouseOrigin = Input.mousePosition;
+	void Update()
+	{
+		if(Input.GetMouseButtonDown(0)) {
+			clickPos = getMousePointOnGround();
+		}
+		else if(Input.GetMouseButton(0)) {
+			Vector3 delta = getMousePointOnGround() - clickPos;
+
+			float tempX, tempY;
+			tempX = delta.x;
+			tempY = delta.y;
+	
+			transform.position -= new Vector3(tempX, tempY, 0);			
+		}
+	}
+
+	private Vector3 getMousePointOnGround() {
+		Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+
+		if(groundPlane.Raycast(ray, out float distToGround)) {
+			return ray.GetPoint(distToGround);
 		}
 
-		if(Input.GetMouseButton(0))
-		{
-			//Left click held
-			Vector3 mousePos = Input.mousePosition;
-			Vector3 temp = Camera.main.ScreenToViewportPoint(new Vector3(mousePos.x - mouseOrigin.x, mousePos.y - mouseOrigin.y, pos.z));
-			Vector3 move = new Vector3(-temp.x * panSpeed, -temp.y * panSpeed, 0);
-			Camera.main.transform.Translate(move, Space.Self);
-
-			if(mousePos == prevPos)
-			{
-				mouseOrigin = mousePos;
-			}
-			prevPos = mousePos;
-		}
-    }
+		return clickPos;
+	}
 }
