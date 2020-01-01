@@ -96,6 +96,25 @@ public class Accessory : MonoBehaviour
     void configureArmor(Armor armor)
     {
         type = MachineFrame.HardpointType.ARMOR;
+
+        switch(armor) {
+            case Armor.REINFORCED_PLATING:
+                kineticResistance = 50;
+                energyResistance = 0;
+                incendiaryResistance = 60;
+                weight = Weight.HEAVY;
+                break;
+            case Armor.ANTI_STATIC_PLATING:
+                kineticResistance = 30;
+                energyResistance = 70;
+                incendiaryResistance = 20;
+                weight = Weight.MEDIUM;
+                break;
+            default:
+                Debug.Log("Invalid armor value-- Forgot to add a case to configureArmor? Armor: " + armor.ToString());
+                break;
+
+        }
     }
 
     void configureUtility(Utility utility)

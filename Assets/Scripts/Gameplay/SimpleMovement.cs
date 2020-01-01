@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class SimpleMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -31,7 +25,6 @@ public class SimpleMovement : MonoBehaviour
         {
             yVelocity -= 0.1f;
         }
-
         this.transform.SetPositionAndRotation(new Vector3(transform.position.x + xVelocity, transform.position.y + yVelocity, 0), Quaternion.identity);
     }
 }
