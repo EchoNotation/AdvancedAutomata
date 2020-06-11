@@ -122,20 +122,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5266353657143265514}
-<<<<<<< HEAD
   m_Enabled: 1
-=======
-  m_Enabled: 0
->>>>>>> master
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eab1dd4493ef2fd4cb928dcaad2a6ba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   target: {x: 40, y: 40}
-=======
-  target: {x: 0, y: 0}
->>>>>>> master
   speed: 1
 --- !u!61 &3160066353298135436
 BoxCollider2D:
@@ -170,11 +162,8 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5266353657143265514}
-<<<<<<< HEAD
   m_Enabled: 0
-=======
   m_Enabled: 1
->>>>>>> master
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69aa7ca4acc15d2448120a2a73e1397e, type: 3}
   m_Name: 
@@ -211,10 +200,7 @@ GameObject:
   - component: {fileID: 2657489010255457058}
   - component: {fileID: 6407448744517220819}
   - component: {fileID: 2200805935604358053}
-<<<<<<< HEAD
   - component: {fileID: 1423159900}
-=======
->>>>>>> master
   m_Layer: 0
   m_Name: Sight Range
   m_TagString: Scanner
@@ -273,26 +259,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-<<<<<<< HEAD
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-=======
-  m_Sprite: {fileID: 0}
->>>>>>> master
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-<<<<<<< HEAD
   m_Size: {x: 0.2, y: 0.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-=======
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
->>>>>>> master
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!58 &2200805935604358053
@@ -311,7 +286,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 7
-<<<<<<< HEAD
 --- !u!114 &1423159900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,5 +298,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e57d529135c139e459add8ad13cb042c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-=======
->>>>>>> master
