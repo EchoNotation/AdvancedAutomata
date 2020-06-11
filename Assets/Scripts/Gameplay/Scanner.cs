@@ -12,7 +12,8 @@ public class Scanner : MonoBehaviour
 
     public void EnterRange(Collider2D other)
     {
-        PolygonCollider2D collider = other.TryGetComponent(PolygonCollider2D, PolygonCollider2D);
+        //PolygonCollider2D collider = other.TryGetComponent(PolygonCollider2D, PolygonCollider2D);
+        Collider2D collider = other;
         switch (collider.gameObject.tag)
         {
             case "Wall":
@@ -26,7 +27,7 @@ public class Scanner : MonoBehaviour
                 {
                     float nDistance = Mathf.Infinity;
                     float fDistance = Mathf.Infinity;
-                    PolygonCollider2D poly = collider;
+                    PolygonCollider2D poly = (PolygonCollider2D)collider;
 
                     for (int i = 0; i < poly.points.Length; i++)
                     {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WhenSpotted : MonoBehaviour
 {
-    void OnTriggerEnter2D(PolygonCollider2D collider)
+    void OnTriggerEnter2D(Collider2D collider)
     {
         GameObject other = collider.gameObject;
         if (other.CompareTag("Scanner"))
