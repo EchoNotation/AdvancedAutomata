@@ -8,7 +8,9 @@ public class BeaconNetwork : MonoBehaviour
     public GameObject beacon;
     public bool readyBeacon = false; //set true to instantiate a beacon on next click
     public Vector2 placementPosition;
-    
+    LinkedList<GameObject> allBeacons = new LinkedList<GameObject>();
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,12 +20,17 @@ public class BeaconNetwork : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (readyBeacon)
+        {
+            createBeacon(placementPosition);
+            readyBeacon = false;
+        }
     }
 
     public void createBeacon(Vector2 position)
     {
         GameObject newBeacon = Instantiate(beacon, position, Quaternion.identity);
-        //newBeacon.getComponent<>().initialize();
+        allBeacons.AddLast(newBeacon);
+        newBeacon.GetComponent<Beacon>().Initialize(allBeacons);
     }
 }
