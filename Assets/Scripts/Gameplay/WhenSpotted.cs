@@ -9,7 +9,8 @@ public class WhenSpotted : MonoBehaviour
         GameObject other = collider.gameObject;
         if (other.CompareTag("Scanner"))
         {
-            other.GetComponent<Scanner>().EnterRange(collider);
+            Debug.Log("Scanner detected!");
+            other.GetComponent<Scanner>().EnterRange(this.gameObject.GetComponent<PolygonCollider2D>());
         }
     }
 

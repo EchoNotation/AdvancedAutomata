@@ -55,7 +55,7 @@ public class Scanner : MonoBehaviour
                 Terrain.Add(collider);
                 return;
             default:
-                Debug.Log("Unknown ping type");
+                Debug.Log("Unknown ping type! Tag: " + collider.gameObject.tag);
                 return;
         }   
     }
