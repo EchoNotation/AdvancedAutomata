@@ -10,13 +10,13 @@ public class Scanner : MonoBehaviour
     List<Collider2D> Terrain = new List<Collider2D>();
 
 
-    public void EnterRange(Collider2D other)
+    public void EnterRange(GameObject obj)
     {
         //PolygonCollider2D collider = other.TryGetComponent(PolygonCollider2D, PolygonCollider2D);
-        Collider2D collider = other;
-        switch (collider.gameObject.tag)
+        switch (obj.tag)
         {
             case "Wall":
+                PolygonCollider2D collider = obj.GetComponent<PolygonCollider2D>();
                 Debug.Log("Its a wall!");
                 Vector2 wallPos = collider.ClosestPoint(this.transform.position);
                 Vector2 targetPos = this.transform.parent.GetComponent<AutoMovement>().target;
@@ -54,8 +54,17 @@ public class Scanner : MonoBehaviour
 
                 Terrain.Add(collider);
                 return;
+            case "Coal":
+                Debug.Log("Found coal deposit!");
+                break;
+            case "Iron":
+                Debug.Log("Found iron deposit!");
+                break;
+            case "Electrum":
+                Debug.Log("Found electrum deposit!");
+                break;
             default:
-                Debug.Log("Unknown ping type! Tag: " + collider.gameObject.tag);
+                Debug.Log("Unknown tag detected by a scanner! Tag: " + obj.tag);
                 return;
         }   
     }
