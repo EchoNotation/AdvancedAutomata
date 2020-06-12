@@ -19,6 +19,7 @@ public class MachineFrame : MonoBehaviour
 
     private FrameType type;
     //0 : Weapon, 1 : Armor, 2 : Utility
+    //Maybe just combat and utility?
     private int[] numOfHardpoints;
     private int[] numOfAvailableHardpoints;
 
@@ -56,7 +57,7 @@ public class MachineFrame : MonoBehaviour
         }
     }
 
-    void connectHardpoint(Accessory accessory)
+    void connectWeapon()
     {
 
     }
