@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Wall
   - Scanner
+  - Coal
+  - Iron
+  - Electrum
   layers:
   - Default
   - TransparentFX
