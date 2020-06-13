@@ -97,9 +97,15 @@ public class UnitLogic : MonoBehaviour
     private System.Diagnostics.Stopwatch timer;
     private long initialTime;
 
+    private int coalDepositsNearby, ironDepositsNearby, electrumDepositsNearby;
+
     // Start is called before the first frame update
     void Start()
     {
+        coalDepositsNearby = 0;
+        ironDepositsNearby = 0;
+        electrumDepositsNearby = 0;
+
         cards = new List<LogicCard>();
         timer = new System.Diagnostics.Stopwatch();
 
@@ -107,7 +113,7 @@ public class UnitLogic : MonoBehaviour
         initialTime = timer.ElapsedMilliseconds;
 
         LogicCard lc1 = new LogicCard();
-        lc1.setTrigger(Triggers.NEVER);
+        lc1.setTrigger(Triggers.MATERIAL_NEARBY);
         lc1.insertAction(0, Actions.BROADCAST);
         lc1.setInstant(true);
         LogicCard lc2 = new LogicCard();
@@ -145,11 +151,11 @@ public class UnitLogic : MonoBehaviour
                     conditionMet = false;
                     break;
                 case Triggers.MATERIAL_NEARBY:
-                    //These cases would all have more sophisticated logic that determines the conditionMet variable.
-                    conditionMet = false;
+                    //Logic not final, this particular trigger should specify which material to detect? Maybe?
+                    conditionMet = coalNearby() | ironNearby() | electrumNearby();
                     break;
                 case Triggers.LISTEN:
-                    //These cases would all have more sophisticated logic that determines the conditionMet variable.
+                    //This case has more sophisticated logic than described here.
                     conditionMet = false;
                     break;
                 default:
@@ -191,6 +197,59 @@ public class UnitLogic : MonoBehaviour
             //Actions have been executed, and the executed card was not instant, so no further logic needs to be refreshed.
             return;
         }
+    }
+
+    public void newMineralInRange(MineralDeposit.Minerals type)
+    {
+        switch(type)
+        {
+            case MineralDeposit.Minerals.COAL:
+                coalDepositsNearby++;
+                break;
+            case MineralDeposit.Minerals.IRON:
+                ironDepositsNearby++;
+                break;
+            case MineralDeposit.Minerals.ELECTRUM:
+                electrumDepositsNearby++;
+                break;
+            default:
+                Debug.Log("Invalid mineral type in UnitLogic! Did you forget to add a case for a new mineral? Mineral: " + type.ToString());
+                break;
+        }
+    }
+
+    public void mineralLeftRange(MineralDeposit.Minerals type)
+    {
+        switch (type)
+        {
+            case MineralDeposit.Minerals.COAL:
+                coalDepositsNearby--;
+                break;
+            case MineralDeposit.Minerals.IRON:
+                ironDepositsNearby--;
+                break;
+            case MineralDeposit.Minerals.ELECTRUM:
+                electrumDepositsNearby--;
+                break;
+            default:
+                Debug.Log("Invalid mineral type in UnitLogic! Did you forget to add a case for a new mineral? Mineral: " + type.ToString());
+                break;
+        }
+    }
+
+    private bool coalNearby()
+    {
+        return coalDepositsNearby > 0;
+    }
+
+    private bool ironNearby()
+    {
+        return ironDepositsNearby > 0;
+    }
+
+    private bool electrumNearby()
+    {
+        return electrumDepositsNearby > 0;
     }
 }
 

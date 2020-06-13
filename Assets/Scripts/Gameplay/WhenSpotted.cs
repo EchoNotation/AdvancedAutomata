@@ -9,7 +9,6 @@ public class WhenSpotted : MonoBehaviour
         GameObject other = collider.gameObject;
         if (other.CompareTag("Scanner"))
         {
-            Debug.Log("Scanner detected!");
             other.GetComponent<Scanner>().EnterRange(this.gameObject);
         }
     }
@@ -19,7 +18,7 @@ public class WhenSpotted : MonoBehaviour
         GameObject other = collider.gameObject;
         if (other.CompareTag("Scanner"))
         {
-            other.GetComponent<Scanner>().ExitRange(collider);
+            other.GetComponent<Scanner>().ExitRange(this.gameObject);
         }
     }
 }

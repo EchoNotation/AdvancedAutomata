@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Scanner : MonoBehaviour
@@ -56,25 +57,40 @@ public class Scanner : MonoBehaviour
                 return;
             case "Coal":
                 Debug.Log("Found coal deposit!");
+                this.gameObject.GetComponent<UnitLogic>().newMineralInRange(MineralDeposit.Minerals.COAL);
                 break;
             case "Iron":
                 Debug.Log("Found iron deposit!");
+                this.gameObject.GetComponent<UnitLogic>().newMineralInRange(MineralDeposit.Minerals.IRON);
                 break;
             case "Electrum":
                 Debug.Log("Found electrum deposit!");
+                this.gameObject.GetComponent<UnitLogic>().newMineralInRange(MineralDeposit.Minerals.ELECTRUM);
                 break;
             default:
                 Debug.Log("Unknown tag detected by a scanner! Tag: " + obj.tag);
                 return;
         }   
     }
-    public void ExitRange(Collider2D collider)
+    public void ExitRange(GameObject obj)
     {
-        switch (collider.gameObject.tag)
+        switch (obj.tag)
         {
             case "Wall":
-                Terrain.Remove(collider);
+                Terrain.Remove(obj.GetComponent<PolygonCollider2D>());
                 return;
+            case "Coal":
+                this.gameObject.GetComponent<UnitLogic>().mineralLeftRange(MineralDeposit.Minerals.COAL);
+                return;
+            case "Iron":
+                this.gameObject.GetComponent<UnitLogic>().mineralLeftRange(MineralDeposit.Minerals.IRON);
+                return;
+            case "Electrum":
+                this.gameObject.GetComponent<UnitLogic>().mineralLeftRange(MineralDeposit.Minerals.ELECTRUM);
+                return;
+            default:
+                Debug.Log("Unknown tag left scanner radius! Tag: " + obj.tag);
+                break;
         }
     }
 }
