@@ -30,7 +30,12 @@ public class BeaconNetwork : MonoBehaviour
     public void createBeacon(Vector2 position)
     {
         GameObject newBeacon = Instantiate(beacon, position, Quaternion.identity);
-        newBeacon.GetComponent<Beacon>().Initialize(allBeacons);
+        newBeacon.GetComponent<Beacon>().Initialize(this.gameObject, allBeacons);
         allBeacons.AddLast(newBeacon);
+    }
+
+    public void beaconLost(GameObject beacon)
+    {
+        Debug.Log("a Beacon is Lost");
     }
 }

@@ -6,22 +6,27 @@ public class Beacon : MonoBehaviour
 {
 
     Vector2 position;
+    public int health = 100;
+    int armor = 0;
 
     //Beacon Network Information
-    LinkedListNode<GameObject> myHQEntry;
+    GameObject beaconNetwork;
     LinkedList<GameObject> connectedBeacons = new LinkedList<GameObject>();
 
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (health <= 0)
+        {
+            die();
+        }
     }
 
-    public void Initialize(LinkedList<GameObject> allBeacons)
+    public void Initialize(GameObject network, LinkedList<GameObject> allBeacons)
     {
+        beaconNetwork = network;
         position = this.transform.position;
-        myHQEntry = allBeacons.Last;
         foreach(GameObject beacon in allBeacons)
         {
             Debug.Log("init");
@@ -43,4 +48,9 @@ public class Beacon : MonoBehaviour
         connectedBeacons.AddLast(other);
     }
 
+    void die()
+    {
+        beaconNetwork.GetComponent<BeaconNetwork>().beaconLost(this.gameObject);
+        Destroy(this.gameObject);
+    }
 }
