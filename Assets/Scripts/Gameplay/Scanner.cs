@@ -57,15 +57,15 @@ public class Scanner : MonoBehaviour
                 return;
             case "Coal":
                 Debug.Log("Found coal deposit!");
-                this.gameObject.GetComponent<UnitLogic>().newMineralInRange(MineralDeposit.Minerals.COAL);
+                transform.parent.gameObject.GetComponent<UnitLogic>().newMineralInRange(MineralDeposit.Minerals.COAL);
                 break;
             case "Iron":
                 Debug.Log("Found iron deposit!");
-                this.gameObject.GetComponent<UnitLogic>().newMineralInRange(MineralDeposit.Minerals.IRON);
+                transform.parent.gameObject.GetComponent<UnitLogic>().newMineralInRange(MineralDeposit.Minerals.IRON);
                 break;
             case "Electrum":
                 Debug.Log("Found electrum deposit!");
-                this.gameObject.GetComponent<UnitLogic>().newMineralInRange(MineralDeposit.Minerals.ELECTRUM);
+                transform.parent.gameObject.GetComponent<UnitLogic>().newMineralInRange(MineralDeposit.Minerals.ELECTRUM);
                 break;
             default:
                 Debug.Log("Unknown tag detected by a scanner! Tag: " + obj.tag);
@@ -80,13 +80,13 @@ public class Scanner : MonoBehaviour
                 Terrain.Remove(obj.GetComponent<PolygonCollider2D>());
                 return;
             case "Coal":
-                this.gameObject.GetComponent<UnitLogic>().mineralLeftRange(MineralDeposit.Minerals.COAL);
+                transform.parent.gameObject.GetComponent<UnitLogic>().mineralLeftRange(MineralDeposit.Minerals.COAL);
                 return;
             case "Iron":
-                this.gameObject.GetComponent<UnitLogic>().mineralLeftRange(MineralDeposit.Minerals.IRON);
+                transform.parent.gameObject.GetComponent<UnitLogic>().mineralLeftRange(MineralDeposit.Minerals.IRON);
                 return;
             case "Electrum":
-                this.gameObject.GetComponent<UnitLogic>().mineralLeftRange(MineralDeposit.Minerals.ELECTRUM);
+                transform.parent.gameObject.GetComponent<UnitLogic>().mineralLeftRange(MineralDeposit.Minerals.ELECTRUM);
                 return;
             default:
                 Debug.Log("Unknown tag left scanner radius! Tag: " + obj.tag);
