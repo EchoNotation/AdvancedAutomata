@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4437351713660804394}
   - component: {fileID: 8932223721293578076}
   - component: {fileID: 7313695645302396581}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Sight Range
   m_TagString: Scanner
   m_Icon: {fileID: 0}
