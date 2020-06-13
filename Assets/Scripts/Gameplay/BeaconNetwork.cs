@@ -22,15 +22,15 @@ public class BeaconNetwork : MonoBehaviour
     {
         if (readyBeacon)
         {
-            createBeacon(placementPosition);
             readyBeacon = false;
+            createBeacon(placementPosition);
         }
     }
 
     public void createBeacon(Vector2 position)
     {
         GameObject newBeacon = Instantiate(beacon, position, Quaternion.identity);
-        allBeacons.AddLast(newBeacon);
         newBeacon.GetComponent<Beacon>().Initialize(allBeacons);
+        allBeacons.AddLast(newBeacon);
     }
 }
