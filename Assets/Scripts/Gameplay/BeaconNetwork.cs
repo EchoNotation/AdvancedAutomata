@@ -34,8 +34,12 @@ public class BeaconNetwork : MonoBehaviour
         allBeacons.AddLast(newBeacon);
     }
 
-    public void beaconLost(GameObject beacon)
+    public void beaconLost(GameObject lostBeacon)
     {
         Debug.Log("a Beacon is Lost");
+        foreach (GameObject beacon in allBeacons)
+        {
+            beacon.GetComponent<Beacon>().loseBeacon(lostBeacon);
+        }
     }
 }

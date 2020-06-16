@@ -48,6 +48,11 @@ public class Beacon : MonoBehaviour
         connectedBeacons.AddLast(other);
     }
 
+    public void loseBeacon(GameObject beacon)
+    {
+        connectedBeacons.Remove(beacon);
+    }
+
     void die()
     {
         beaconNetwork.GetComponent<BeaconNetwork>().beaconLost(this.gameObject);
